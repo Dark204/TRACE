@@ -1,0 +1,3 @@
+-r requirements-tables.txt
+transformers==4.51.3
+# Install the matching CUDA build of PyTorch separately (see README).

@@ -1,0 +1,1 @@
+{"torch":"2.12.1+cu126","transformers":"4.51.3","dtype":"bfloat16","attention":"sdpa","settings":"Q0 prompt, 4096/8192 input budget, 2048-token maximum code chunk, sigmoid(yes-no)/max chunk"}

@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+build/
+work/
+recomputed/
+/*recomputed*.json
+*.class
+*.jar
+*.safetensors
+*.log
+events.jsonl*

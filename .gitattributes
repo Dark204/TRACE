@@ -1,0 +1,5 @@
+*.json.gz -text
+data/** -text
+reports/** -text
+*.py text eol=lf
+*.java -text
