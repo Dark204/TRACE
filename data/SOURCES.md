@@ -1,7 +1,8 @@
-# Baseline data sources
+# Sources of the comparison ranks
 
-- AutoFL GPT-4 R1: [author-released Defects4J output](https://github.com/coinse/autofl/blob/main/combined_fl_results/d4j_gpt4_results_R1.json).
-- AutoFL GPT-3.5 R5: [author-released Defects4J output](https://github.com/coinse/autofl/blob/main/combined_fl_results/d4j_gpt3_results_R5.json).
-- FlexFL: [author-released Llama3 Defects4J results](https://github.com/ZJU-CTAG/FlexFL/tree/main/Results/Llama3_Defects4J_All).
+- [BoostN, Ochiai and SBIR method rankings](https://github.com/ZJU-CTAG/FlexFL/tree/f221e88bd10bc1d908469a36a71fda0cfa8c2dd2/FlexFL/data/FL_results): first matching method in the ordered CSV.
+- [Agent4SR](https://github.com/ZJU-CTAG/FlexFL/tree/f221e88bd10bc1d908469a36a71fda0cfa8c2dd2/Results/Llama3_Defects4J_SR): numbered method slots in the final assistant response. Empty, incomplete and non-method slots do not shift the remaining positions.
+- [Full FlexFL](https://github.com/ZJU-CTAG/FlexFL/tree/f221e88bd10bc1d908469a36a71fda0cfa8c2dd2/Results/Llama3_Defects4J_All): the ordered final recommendations, through five inspections.
+- [AutoFL](https://github.com/coinse/autofl/tree/477190e2513b10be2b6079f6fc1ca132ab839e60/combined_fl_results): GPT-3.5 R1–R5, GPT-4 R1–R2, and LLM+Test (five runs). Use the authors' combined ranks for the common targets. For targets outside the summary, use the released predictions and the authors' scoring rule.
 
-`competitors.json` contains the matched first ranks. An absent baseline key means that baseline was not scored for the case; a null rank means no scored hit. Raw baseline outputs are not redistributed.
+All methods are evaluated against the same repaired methods, using declaring class, method name, and parameter types. A missing baseline key means the configuration is outside the panel; a null means no matching predicted method. A bug with no TRACE ranking remains in the denominator. The full case roster, prediction files and matched ranks are verified against `seal.json`. No model weights, raw dialogues or source checkouts are included.

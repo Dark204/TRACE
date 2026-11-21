@@ -46,7 +46,7 @@ def verified_cases():
             assert not path.exists() and case not in seal["rankings"]
             assert all(r is None for r in row["ranks"].values())
         yield {"case": case, **row["ranks"], "baselines": tables["competitors"][case]["ranks"]}
-    assert len(seen) == seal["cases"] == 301
+    assert len(seen) == seal["cases"] == 347
     assert seen == tables["truth"].keys() == tables["competitors"].keys()
     assert {r["case"] for r in tables["cases"] if r["status"] == "completed"} == seal["rankings"].keys()
     assert {p.name for p in (DATA / "rankings").iterdir()} == {f"{r}.json.gz" for r in seal["rankings"]}
@@ -55,10 +55,21 @@ def verified_cases():
 def main():
     cli = argparse.ArgumentParser(description=__doc__)
     cli.add_argument("--check", action="store_true", help="verify the data without printing metrics")
+    cli.add_argument("--main-table", action="store_true", help="emit all Table III metrics for the two shared bug rosters")
     args = cli.parse_args()
     rows = list(verified_cases())
     if args.check:
         print(f"Verified {len(rows)} cases.")
+        return
+    if args.main_table:
+        panels = {}
+        for title, group in (("347", rows), ("252", [r for r in rows if "AutoFL_GPT4_R2" in r["baselines"]])):
+            assert len(group) == int(title)
+            keys = set.intersection(*(set(r["baselines"]) for r in group))
+            panels[title] = {"TRACE": summarize(group, "e")}
+            for key in sorted(keys):
+                panels[title][key] = summarize([{"rank": r["baselines"][key]} for r in group], "rank")
+        print(json.dumps(panels, indent=2))
         return
     metrics = {a: summarize(rows, a) for a in ARMS}
     comparisons = {}
