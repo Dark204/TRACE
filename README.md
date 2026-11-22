@@ -1,4 +1,4 @@
-# TRACE
+# TRACE: Trace-Scoped Relevance Assessment With Calibrated Evidence for Method-Level Fault Localization
 
 Final implementation and data for 347 bugs from all 17 Defects4J projects; AutoFL covers 252 of these bugs.
 
