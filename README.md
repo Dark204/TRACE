@@ -1,6 +1,6 @@
 # TRACE: Trace-Scoped Relevance Assessment With Calibrated Evidence for Method-Level Fault Localization
 
-Final implementation and data for 347 bugs from all 17 Defects4J projects; AutoFL covers 252 of these bugs.
+TRACE ranks candidate methods using a failing test, its execution coverage, and the program source. This repository contains the implementation and data.
 
 ## Run one case
 
@@ -24,22 +24,4 @@ python -m pip install -r requirements-tables.txt
 python -B -m trace_release.tables --main-table
 ```
 
-See [baseline data sources](data/SOURCES.md). The data use one case roster. Each ranking file stores a method dictionary and zero-based indices in rank order.
-
-## Matched results
-
-| Method | 347: Top-1 / 3 / 5 | MRR@5 | 252: Top-1 / 3 / 5 | MRR@5 |
-|---|---:|---:|---:|---:|
-| BoostN | 78 / 117 / 134 | 0.282 | 57 / 82 / 89 | 0.274 |
-| Ochiai | 102 / 167 / 199 | 0.396 | 76 / 127 / 153 | 0.411 |
-| SBIR | 104 / 171 / 195 | 0.401 | 79 / 124 / 139 | 0.407 |
-| FlexFL (Agent4SR) | 111 / 154 / 164 | 0.384 | 80 / 112 / 122 | 0.384 |
-| FlexFL | 166 / 215 / 236 | 0.556 | 121 / 157 / 171 | 0.557 |
-| AutoFL GPT-3.5 (1 run) | — | — | 82 / 105 / 117 | 0.379 |
-| AutoFL GPT-3.5 (5 runs) | — | — | 114 / 141 / 150 | 0.511 |
-| AutoFL GPT-4 (1 run) | — | — | 129 / 160 / 172 | 0.579 |
-| AutoFL GPT-4 (2 runs) | — | — | 144 / 182 / 189 | 0.644 |
-| LLM+Test (5 runs) | — | — | 75 / 98 / 112 | 0.350 |
-| TRACE | 170 / 246 / 264 | 0.596 | 132 / 184 / 194 | 0.623 |
-
-A dash means the configuration is unavailable for the full panel. Each cell uses the same bugs and repaired-method mapping as the other methods in its panel.
+See [data sources](data/SOURCES.md) for provenance.
