@@ -1,4 +1,4 @@
-# TRACE: Trace-Scoped Relevance Assessment With Calibrated Evidence for Method-Level Fault Localization
+# Test-Scoped Relevance Assessment With Calibrated Evidence for Method-Level Fault Localization
 
 TRACE ranks candidate methods using a failing test, its execution coverage, and the program source. This repository contains the implementation and data.
 
